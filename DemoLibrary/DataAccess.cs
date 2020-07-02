@@ -53,13 +53,17 @@ namespace DemoLibrary
             List<PersonModel> output = new List<PersonModel>();
             string[] content = File.ReadAllLines(personTextFile);
 
+            ConvertCSVToModel(content, output);
+
+            return output;
+        }
+        public static void ConvertCSVToModel(string[] content, List<PersonModel> output)
+        {
             foreach (string line in content)
             {
                 string[] data = line.Split(',');
                 output.Add(new PersonModel { FirstName = data[0], LastName = data[1] });
             }
-
-            return output;
         }
     }
 }
